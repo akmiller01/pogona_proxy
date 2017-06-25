@@ -1,0 +1,21 @@
+version: '2'
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    networks:
+      - blog
+      - coin
+
+networks:
+  blog:
+    external:
+      name: pogonablog_default
+  coin:
+    external:
+      name: coinmacd_default
+  
